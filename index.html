@@ -5,33 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - ProjManager</title>
-    <link rel="stylesheet" href="Styles/style.css">n
+    <link rel="stylesheet" href="Styles/style.css">
 </head>
 <body>
     <header>
-        <div class="navegacao"></div>
-        <nav>
-            <img class="Menu" src="Fotos/Menu.png" alt="Menu">
+        <nav class="navegacao">
         </nav>
         <a href="login.html"><p class="sair">Sair</p></a>
-        <a href="index.html"><title class="capa">ProjManager</title></a>
+        <a href="index.html"><h1 class="capa">ProjManager</h1></a>
     </header>
     <main>
-         <h1 class="title">Selecione a opção que você deseja acessar:</h1>
-         <a href="ccliente/cadastroCliente.html"><div id="ccliente">
-            <h1 class="ccliente">Cadastro <br> Cliente </h1>
-        </div></a></a>
-        <h1 class="textcliente">Aqui você poderá criar ou editar o cadastro do cliente;</h1>
-        <a href="ccolaborador/ccolaborador.html"><div id="ccolaborador">
-            <h1 class="ccolaborador">Cadastro <br> Colaborador </h1>
-        </div></a>
-        <h1 class="textcolaborador">Aqui você poderá criar ou editar o cadastro do Colaborador;</h1>
-
-        <a href="projetos/projetos.html"><div id="projeto">
-            <h1 class="projeto">Projeto</h1>
-        </div></a>
-        <h1 class="textprojeto">Aqui você poderá gerenciar os projetos.</h1>
-
+        <section class="cadastro-cliente">
+            <a href="ccliente/cadastroCliente.html">
+                <div>
+                    <h2>Cadastro Cliente</h2>
+                    <p>Aqui você poderá criar ou editar o cadastro do cliente.</p>
+                </div>
+            </a>
+        </section>
+        <section class="cadastro-colaborador">
+            <a href="ccolaborador/ccolaborador.html">
+                <div>
+                    <h2>Cadastro Colaborador</h2>
+                    <p>Aqui você poderá criar ou editar o cadastro do colaborador.</p>
+                </div>
+            </a>
+        </section>
+        <section class="gerenciamento-projetos">
+            <a href="projetos/projetos.html">
+                <div>
+                    <h2>Gerenciamento de Projetos</h2>
+                    <p>Aqui você poderá gerenciar os projetos.</p>
+                </div>
+            </a>
+        </section>
     </main>
 </body>
 </html>
