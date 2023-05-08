@@ -55,3 +55,130 @@
     font-weight: bold;
     color: #ffffff;
   }
+  title {
+    width: 700px; 
+    margin-left: auto;
+    margin-right: auto; 
+  }
+
+/* Estilos gerais */
+.buscarCliente {
+
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 90px;
+}
+
+.buscarCliente label {
+  font-weight: bold;
+}
+
+.buscarCliente input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.buscarCliente input[type="submit"] {
+  background-color: #A13854;;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buscarCliente input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f0f0f0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Estilos do formulário */
+section {
+  margin-top: 80px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="button"] {
+  background-color: #A13854;;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p.Nome,
+p.LastName,
+p.Email,
+p.CPF,
+p.Telefone,
+p.CEP,
+p.Endereço,
+p.Bairro,
+p.Cidade,
+p.numero,
+p.UF,
+p.Complemento {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+p.Nome input[type="text"],
+p.LastName input[type="text"],
+p.Email input[type="text"],
+p.CPF input[type="text"],
+p.Telefone input[type="text"],
+p.CEP input[type="text"],
+p.Endereço input[type="text"],
+p.Bairro input[type="text"],
+p.Cidade input[type="text"],
+p.numero input[type="text"],
+p.UF select,
+p.Complemento input[type="text"] {
+  flex: 1 0 60%;
+}
+
