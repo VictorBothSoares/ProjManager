@@ -1,0 +1,111 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Cliente` (
+  `idCliente` INT NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(255) NOT NULL,
+  `sobrenome` VARCHAR(45) NULL,
+  `CPF/CNPJ` VARCHAR(18) NOT NULL,
+  `email` VARCHAR(100) NULL,
+  `Telefone` BIGINT(14) NULL,
+  `Endereco` VARCHAR(150) NULL,
+  `CEP` INT(50) NULL,
+  `bairro` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NULL,
+  `numero` INT(50) NULL,
+  `UF` VARCHAR(45) NULL,
+  `Complemento` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCliente`),
+  UNIQUE INDEX `CPF_CNPJ_UNIQUE` (`CPF/CNPJ` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`funcionario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`funcionario` (
+  `idFuncionario` INT NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(255) NOT NULL,
+  `sobrenome` VARCHAR(45) NULL,
+  `Email` VARCHAR(100) NOT NULL,
+  `emailCoorp` VARCHAR(100) NOT NULL,
+  `CPF_CNPJ` VARCHAR(18) NOT NULL,
+  `Telefone` BIGINT(14) NULL,
+  `Endereco` VARCHAR(150) NULL,
+  `CEP` INT(50) NULL,
+  `bairro` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NULL,
+  `numero` INT(50) NULL,
+  `UF` VARCHAR(45) NULL,
+  `Complemento` VARCHAR(100) NULL,
+  PRIMARY KEY (`idFuncionario`),
+  UNIQUE INDEX `CPF_CNPJ_UNIQUE` (`CPF_CNPJ` ASC),
+  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Projetos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Projetos` (
+  `idProjetos` INT NOT NULL AUTO_INCREMENT,
+  `NomeProjeto` VARCHAR(255) NULL,
+  `verba` INT NULL,
+  `valorGasto` INT NULL,
+  `Descricao` TEXT NULL,
+  `Cliente_idCliente` INT NOT NULL,
+  `DataConclusao` DATE NULL,
+  PRIMARY KEY (`idProjetos`, `Cliente_idCliente`),
+  INDEX `fk_Projetos_Cliente1_idx` (`Cliente_idCliente` ASC),
+  CONSTRAINT `fk_Projetos_Cliente1`
+    FOREIGN KEY (`Cliente_idCliente`)
+    REFERENCES `mydb`.`Cliente` (`idCliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `
+-- mydb.funcionario_has_Projetos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`funcionario_has_Projetos` (
+  `funcionario_idFuncionario` INT NOT NULL,
+  `Projetos_idProjetos` INT NOT NULL,
+  `DataPrevistaConclusao` DATE NULL,
+  `DataInicio` DATE NULL,
+  PRIMARY KEY (`funcionario_idFuncionario`, `Projetos_idProjetos`),
+  INDEX `fk_funcionario_has_Projetos_Projetos1_idx` (`Projetos_idProjetos` ASC),
+  INDEX `fk_funcionario_has_Projetos_funcionario_idx` (`funcionario_idFuncionario` ASC),
+  CONSTRAINT `fk_funcionario_has_Projetos_funcionario`
+    FOREIGN KEY (`funcionario_idFuncionario`)
+    REFERENCES `mydb`.`funcionario` (`idFuncionario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_funcionario_has_Projetos_Projetos1`
+    FOREIGN KEY (`Projetos_idProjetos`)
+    REFERENCES `mydb`.`Projetos` (`idProjetos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
+ENGINE = InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
