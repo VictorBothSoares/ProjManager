@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $host = 'localhost';
     $dbname = 'mydb';
     $username = 'root';
-    $password = 'ienh';
+    $password = '';
 
     try {
         // Conexão com o banco de dados
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         });
 </script>
 
-        <form action="cadastroCliente.php" method="post">
+        <form action="salvarCliente.php" method="post">
         <p class="Nome">Nome:
         <input type="text" name="nome" value="<?php echo isset($nome) ? $nome : ''; ?>">
         </p>
