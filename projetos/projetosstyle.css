@@ -1,72 +1,165 @@
-.navegacao{
-    background: #A13854;
-    position: absolute;
-    width: 1440px;
-    height: 65px;
-    left: 0px;
-    top: 0px;
-}
-.Menu{
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    left: 11px;
-    top: 12px;
-}
-.capa{
-    position: absolute;
-    width: 265px;
-    height: 65px;
-    left: 587px;
-    top: 0px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 43px;
-    line-height: 52px;
+/* Estilos gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f0f0f0;
+  }
+  
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  /* Estilos do cabeçalho */
+  header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #A13854;;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .navegacao {
+    display: none;
+  }
+  
+  .Menu {
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .capa {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  
+  .sair {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  title {
+    width: 700px; 
+    margin-left: auto;
+    margin-right: auto; 
+  }
+
+/* Estilos gerais */
+.projetos {
+  border: 1px solid #ddd;
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: 90px;
 }
+
+.projetos label {
+  font-weight: bold;
+}
+
+.projetos input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f0f0f0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Estilos do formulário */
 section {
-    background-color: rgba(255, 255, 255, 0.664);
-    border-radius: 10px;
-    padding: 15px;
-    width: 500px;
-    margin-right: 80px;
-    margin-top: 50px;
+  margin-top: 80px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 4px;
 }
 
-.botao{
-    margin-left: 270px;
-    margin-top: -37px;
-    
-    
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.LastName {
-  margin-left: 270px;
-  margin-top: -37px;
+input[type="number"],
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.numero {
-    margin-left: 270px;
-    margin-top: -115px;
+input[type="button"],
+input[type="submit"] {
+  background-color: #A13854;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.UF{
-    margin-left: 270px;
-        top: 27px;
+p {
+  margin-bottom: 1rem;
 }
 
-.Complemento{
-    margin-left: 270px;
-    top: 39px;
+p.Nome,
+p.verba,
+p.valorg,
+p.desc,
+p.nomec,
+p.resp,
+p.datecriacao,
+p.dataconclusao {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.Salvar{
-    margin-left: 500px;
+p.Nome input[type="text"],
+p.verba input[type="number"],
+p.valorg input[type="number"],
+p.desc textarea,
+p.nomec input[type="number"],
+p.resp input[type="text"],
+p.datacriacao input[type="date"],
+p.dataconclusao input[type="date"] {
+  flex: 1 0 60%;
 }
