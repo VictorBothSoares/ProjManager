@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Verifica se o CPF/CNPJ já existe no banco de dados
         $cpfCnpj = $_POST['cpf_cnpj'];
-        $sqlSelect = "SELECT COUNT(*) as count FROM Cliente WHERE `CPF/CNPJ` = :cpf_cnpj";
+        $sqlSelect = "SELECT COUNT(*) as count FROM funcionario WHERE `CPF_CNPJ` = :cpf_cnpj";
         $stmtSelect = $conn->prepare($sqlSelect);
         $stmtSelect->bindParam(':cpf_cnpj', $cpfCnpj);
         $stmtSelect->execute();
@@ -23,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($count > 0) {
             // CPF/CNPJ já existe, realiza um UPDATE
-            $sql = "UPDATE Cliente SET Nome = :nome, sobrenome = :sobrenome, email = :email, Telefone = :telefone, Endereco = :endereco, CEP = :cep, bairro = :bairro, cidade = :cidade, numero = :numero, UF = :uf, Complemento = :complemento WHERE `CPF/CNPJ` = :cpf_cnpj";
+            $sql = "UPDATE funcionario SET Nome = :nome, sobrenome = :sobrenome, Email = :email, Telefone = :telefone, Endereco = :endereco, CEP = :cep, bairro = :bairro, cidade = :cidade, numero = :numero, UF = :uf, Complemento = :complemento WHERE `CPF_CNPJ` = :cpf_cnpj";
         } else {
             // CPF/CNPJ não existe, realiza um INSERT
-            $sql = "INSERT INTO Cliente (Nome, sobrenome, `CPF/CNPJ`, email, Telefone, Endereco, CEP, bairro, cidade, numero, UF, Complemento)
-            VALUES (:nome, :sobrenome, :cpf_cnpj, :email, :telefone, :endereco, :cep, :bairro, :cidade, :numero, :uf, :complemento)";
+            $sql = "INSERT INTO funcionario (Nome, sobrenome, Email, CPF_CNPJ, Telefone, Endereco, CEP, bairro, cidade, numero, UF, Complemento)
+            VALUES (:nome, :sobrenome, :email, :cpf_cnpj, :telefone, :endereco, :cep, :bairro, :cidade, :numero, :uf, :complemento)";
         }
 
         $stmt = $conn->prepare($sql);
@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $params = array(
             ':nome' => $_POST['nome'],
             ':sobrenome' => $_POST['sobrenome'],
-            ':cpf_cnpj' => $_POST['cpf_cnpj'],
             ':email' => $_POST['email'],
+            ':cpf_cnpj' => $_POST['cpf_cnpj'],
             ':telefone' => $_POST['telefone'],
             ':endereco' => $_POST['endereco'],
             ':cep' => $_POST['cep'],
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':cidade' => $_POST['cidade'],
             ':numero' => $_POST['numero'],
             ':uf' => $_POST['uf'],
-            ':complemento' => $_POST['Complemento']
+            ':complemento' => $_POST['complemento']
         );
 
         // Executa a inserção ou atualização

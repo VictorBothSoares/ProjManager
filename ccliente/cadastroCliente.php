@@ -21,16 +21,17 @@
         </a>
     </header>
     <section class="buscarCliente">
-    <form method="get" action="cadastroCliente.php">
-        <div>
-            <label for="cod_cliente"><strong>Código do Cliente:</strong></label>
-            <input type="number" id="cod_cliente" name="cod_cliente" min="0" required>
-        </div>
-        <div class="botao">
-            <input type="submit" value="Buscar">
-        </div>
-    </form>
-</section>
+        <form method="get" action="cadastroCliente.php">
+            <div>
+                <label for="busca"><strong>Código do Cliente:</strong></label>
+                <input type="text" id="busca" name="busca" required>
+            </div>
+            <div class="botao">
+                <input type="submit" value="Buscar">
+            </div>
+        </form>
+    </section>
+
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -45,11 +46,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Buscar o cliente pelo código
-        $cod_cliente = $_GET['cod_cliente'];
-        $sql = "SELECT * FROM Cliente WHERE idCliente = :cod_cliente";
+        // Obter o valor do campo de busca
+        $busca = $_GET['busca'];
+
+        // Verificar se o valor é um número (código do cliente) ou um CPF/CNPJ
+        if (preg_match('/^\d+$/', $busca)) {
+            $cod_cliente = $busca;
+            $sql = "SELECT * FROM Cliente WHERE idCliente = :cod_cliente";
+        } else {
+            $cpf_cnpj = $busca;
+            $sql = "SELECT * FROM Cliente WHERE `CPF/CNPJ` = :cpf_cnpj";
+        }
+
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':cod_cliente', $cod_cliente, PDO::PARAM_INT);
+
+        if (isset($cod_cliente)) {
+            $stmt->bindParam(':cod_cliente', $cod_cliente, PDO::PARAM_INT);
+        } elseif (isset($cpf_cnpj)) {
+            $stmt->bindParam(':cpf_cnpj', $cpf_cnpj, PDO::PARAM_STR);
+        }
+
         $stmt->execute();
 
         // Verificar se o cliente foi encontrado
@@ -70,13 +86,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $numero = $cliente['numero'];
             $uf = $cliente['UF'];
             $complemento = $cliente['Complemento'];
+
         } else {
             echo "Cliente não encontrado.";
         }
+
     } catch (PDOException $e) {
-        echo 'Erro ao buscar o cliente: ' . $e->getMessage();
+        echo "Erro: " . $e->getMessage();
     }
 }
+
 ?>
 
 <h1 class="title">Cadastro Cliente</h1>
@@ -95,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         document.querySelector('input[name="cidade"]').value = "<?php echo isset($cidade) ? $cidade : ''; ?>";
         document.querySelector('input[name="numero"]').value = "<?php echo isset($numero) ? $numero : ''; ?>";
         document.querySelector('select[name="uf"]').value = "<?php echo isset($uf) ? $uf : ''; ?>";
-        document.querySelector('input[name="complemento"]').value = "<?php echo isset($complemento) ? $complemento : ''; ?>";
+        document.querySelector('input[name="Complemento"]').value = "<?php echo isset($complemento) ? $complemento : ''; ?>";
         });
 </script>
 
@@ -164,17 +183,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </select>
     </p>
     <p class="Complemento">Complemento:
-        <input type="text" name="complemento" value="<?php echo isset($complemento) ? $complemento : ''; ?>">
+        <input type="text" name="Complemento" value="<?php echo isset($complemento) ? $complemento : ''; ?>">
     </p>
     <p class="Salvar">
         <input type="submit" value="Salvar">
     </p>
 </form>
-
-
-
-
-
 </body>
-
 </html>

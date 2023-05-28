@@ -1,72 +1,174 @@
-.navegacao{
-    background-color: #A13854;
-    position: absolute;
-    width: 1440px;
-    height: 65px;
-    left: 0px;
-    top: 0px;
+/* Estilos gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.Menu{
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    left: 11px;
-    top: 12px;
-}
-.capa{
-    position: absolute;
-    width: 265px;
-    height: 65px;
-    left: 587px;
-    top: 0px;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 43px;
-    line-height: 52px;
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f0f0f0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Estilos do cabeçalho */
+header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-section {
     background-color: #A13854;
-    border-radius: 10px;
-    padding: 15px;
-    width: 500px;
-    margin-right: 80px;
-    margin-top: 50px;
+    ;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
-.botao{
-    margin-left: 270px;
-    margin-top: -37px;
-    
-    
+.navegacao {
+    display: none;
 }
 
-.LastName {
-  margin-left: 270px;
-  margin-top: -37px;
+.Menu {
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
-.numero {
-    margin-left: 270px;
-    margin-top: -115px;
+.capa {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
 }
 
-.UF{
-    margin-left: 270px;
-        top: 27px;
+.sair {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
 }
 
-.Complemento{
-    margin-left: 270px;
-    top: 39px;
+title {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.Salvar{
-    margin-left: 500px;
+/* Estilos gerais */
+.BuscarColab {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 90px;
+}
+
+.buscarColab label {
+    font-weight: bold;
+}
+
+.buscarColab input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f0f0f0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Estilos do formulário */
+section {
+    margin-top: 80px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="button"],
+input[type="submit"] {
+    background-color: #A13854;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+p.Nome,
+p.LastName,
+p.Email,
+p.CPF,
+p.Telefone,
+p.CEP,
+p.Endereço,
+p.Bairro,
+p.Cidade,
+p.numero,
+p.UF,
+p.Complemento {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p.Nome input[type="text"],
+p.LastName input[type="text"],
+p.Email input[type="text"],
+p.CPF input[type="text"],
+p.Telefone input[type="text"],
+p.CEP input[type="text"],
+p.Endereço input[type="text"],
+p.Bairro input[type="text"],
+p.Cidade input[type="text"],
+p.numero input[type="text"],
+p.UF select,
+p.Complemento input[type="text"],
+input[type="email"] {
+    flex: 1 0 60%;
 }
