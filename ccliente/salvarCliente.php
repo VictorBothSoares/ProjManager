@@ -1,10 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Configurações do banco de dados
-    $host = 'localhost';
-    $dbname = 'mydb';
-    $username = 'root';
-    $password = '';
+    include('../Banco de dados/conexao.php');
 
     try {
         // Conexão com o banco de dados

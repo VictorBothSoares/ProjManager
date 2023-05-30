@@ -34,10 +34,7 @@
     <?php
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         // Configurações do banco de dados
-        $host = 'localhost';
-        $dbname = 'mydb';
-        $username = 'root';
-        $password = '';
+        include('../Banco de dados/conexao.php');
 
         try {
             // Conexão com o banco de dados
@@ -65,7 +62,7 @@
                     $valorGasto = $projeto['valorGasto'];
                     $descricao = $projeto['Descricao'];
                     $cliente_id = $projeto['Cliente_idCliente'];
-                    $dataInicio = $projeto['dataInicio'];
+                    $dataInicio = $projeto['DataInicio'];
                     $dataConclusao = $projeto['DataConclusao'];
                 } else {
                     echo "Projeto não encontrado.";
@@ -91,7 +88,7 @@
         <p class="desc">Descrição do Projeto:</p>
         <textarea name="descricao" id="descprojeto" cols="60" rows="15" required><?php echo isset($descricao) ? $descricao : ''; ?></textarea>
         <p class="nomec">Código Cliente:
-            <input type="number" name="nome_cliente" required value="<?php echo isset($cliente_id) ? $cliente_id : ''; ?>">
+            <input type="number" name="cliente_id" required value="<?php echo isset($cliente_id) ? $cliente_id : ''; ?>">
         </p>
         <p class="datecriacao">Data Criação:
             <input type="date" name="data_criacao" required value="<?php echo isset($dataInicio) ? $dataInicio : ''; ?>">

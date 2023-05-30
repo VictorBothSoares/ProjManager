@@ -1,10 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Configurações do banco de dados
-    $host = 'localhost';
-    $dbname = 'mydb';
-    $username = 'root';
-    $password = '';
+    include('../Banco de dados/conexao.php');
 
     try {
         // Conexão com o banco de dados
@@ -22,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $count = $result['count'];
 
         if ($count > 0) {
-            $sql = "UPDATE projetos SET verba = :verba, valorGasto = :valor_gasto, Descricao = :descricao, dataInicio = :data_inicio, DataConclusao = :data_conclusao WHERE NomeProjeto = :nome_projeto";
+            $sql = "UPDATE projetos SET verba = :verba, valorGasto = :valor_gasto, Cliente_idCliente = :cliente_id, Descricao = :descricao, dataInicio = :data_inicio, DataConclusao = :data_conclusao WHERE NomeProjeto = :nome_projeto";
         } else {
             $sql = "INSERT INTO projetos (NomeProjeto, verba, valorGasto, Descricao, Cliente_idCliente, dataInicio, DataConclusao)
             VALUES (:nome_projeto, :verba, :valor_gasto, :descricao, :cliente_id, :data_inicio, :data_conclusao)";
@@ -36,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':verba' => $_POST['verba'],
             ':valor_gasto' => $_POST['valor_gasto'],
             ':descricao' => $_POST['descricao'],
-            ':cliente_id' => $_POST['nome_cliente'],
+            ':cliente_id' => $_POST['cliente_id'],
             ':data_inicio' => $_POST['data_criacao'],
             ':data_conclusao' => $_POST['data_conclusao']
         );
